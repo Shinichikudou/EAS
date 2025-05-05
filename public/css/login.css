@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #dfefff, #b0dbff);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* ANIMASI FADE-IN */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ANIMASI SLIDE-IN */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 1100px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Header dengan animasi */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+}
+
+/* Animasi pada Logo */
+.logo {
+    width: 120px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    opacity: 0;
+    animation: slideIn 1s ease-in-out 0.5s forwards;
+}
+
+/* Animasi pada Judul */
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    opacity: 0;
+    animation: slideIn 1s ease-in-out 0.7s forwards;
+}
+
+.title .employee {
+    color: #80c8ff;
+}
+
+.title .attendance {
+    color: #007bff;
+}
+
+.title .system {
+    color: #000;
+}
+
+/* Content Baru */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 120%;
+    padding: 60px 20px 20px;
+}
+
+/* Animasi untuk Form Login */
+.login-box {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    gap: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(21, 169, 255, 0.1);
+    border: 1px solid #59b4ff;
+    opacity: 0;
+    animation: slideIn 1s ease-in-out 0.9s forwards;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Efek Hover & Fokus pada Input */
+.input-group input {
+    width: 100%;
+    padding: 12px 40px;
+    border: 2px solid #80c8ff;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Ikon pada Input */
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #80c8ff;
+}
+
+/* Animasi pada Teks Opsi */
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 1s forwards;
+}
+
+.options a {
+    color: #80c8ff;
+    text-decoration: none;
+}
+
+/* Animasi pada Tombol Login */
+.login-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #80c8ff;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 1.1s forwards;
+}
+
+.login-btn:hover {
+    background: #007bff;
+    transform: scale(1.05);
+}
+
+/* Animasi pada Ilustrasi */
+.illustration {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: slideIn 1s ease-in-out 1.3s forwards;
+}
+
+.illustration img {
+    width: 100%;
+    max-width: 350px;
+    transform: scale(0.8);
+    animation: bounce 2s infinite alternate;
+}
+
+/* Efek Animasi Gambar (Bounce) */
+@keyframes bounce {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}

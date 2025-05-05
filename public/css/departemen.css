@@ -1,0 +1,654 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --grey: #f1f0f6;
+    --dark-grey: #8d8d8d;
+    --light: #fff;
+    --dark: #000;
+    --green: #81d43a;
+    --light-green: #e3FFCB;
+    --blue: #1775F1;
+    --light-blue: #d0e4ff;
+    --dark-blue: #0c5fcd;
+    --red: #FC3B56;
+}
+
+html{
+    overflow-x: hidden;
+}
+body{
+    background: var(--grey);
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    width: 260px;
+    background: var(--light);
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    transition: all 0.4s ease-in-out;
+    z-index: 200;
+}
+
+#sidebar.hide {
+    max-width: 60px;
+    transition: all 0.4s ease-in-out;
+    /* transform: translateX(-200px); Sidebar geser ke kiri */
+}
+
+#sidebar.hide:hover {
+    max-width: 260px;
+    transform: translateX(0); /* Kembali saat hover */
+}
+
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar .brand {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--light);
+    padding: 0 16px;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Ikon Sidebar */
+#sidebar .icon {
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 13px;
+    transition: all 0.4s ease-in-out;
+}
+
+#sidebar .icon-right {
+    margin-left: auto;
+    transition: all 0.4s ease-in-out;
+}
+
+#sidebar .side-menu {
+    margin: 36px 0;
+    padding: 0 20px;
+    transition: all 0.4s ease-in-out;
+}
+
+#sidebar.hide .side-menu {
+    padding: 0 6px;
+}
+
+#sidebar.hide:hover .side-menu {
+    padding: 0 20px;
+}
+
+#sidebar .side-menu a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--dark);
+    padding: 12px 16px 12px 0;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    margin: 4px 0;
+    white-space: nowrap;
+}
+
+#sidebar .side-menu > li > a:hover {
+    background: var(--grey);
+    transform: translateX(5px);
+}
+
+#sidebar .side-menu > li > a.active .icon-right {
+    transform: rotateZ(90deg);
+}
+
+#sidebar .side-menu > li > a.active,
+#sidebar .side-menu > li > a.active a:hover {
+    background: var(--blue);
+    color: var(--light);
+}
+
+#sidebar .divider {
+    margin-top: 24px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--dark-grey);
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+#sidebar.hide .divider {
+    text-align: center;
+}
+
+#sidebar.hide:hover .divider {
+    text-align: left;
+}
+
+#sidebar .side-dropdown {
+    padding-left: 48px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+#sidebar .side-dropdown.show {
+    max-height: 500px;
+}
+
+#sidebar .side-dropdown a:hover {
+    color: var(--blue);
+    background: none;
+    transform: translateX(5px);
+}
+
+#sidebar .ads {
+    width: 100%;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+#sidebar.hide .ads {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#sidebar.hide:hover .ads {
+    opacity: 1;
+    visibility: visible;
+}
+
+#sidebar .ads .wrapper {
+    background: var(--grey);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#sidebar .btn-upgrade {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    color: var(--light);
+    background: var(--blue);
+    border-radius: 5px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+#sidebar .btn-upgrade:hover {
+    background: var(--dark-blue);
+    transform: scale(1.05);
+}
+
+#sidebar .ads .wrapper p {
+    font-size: 12px;
+    color: var(--dark-grey);
+    text-align: center;
+}
+
+#sidebar .ads .wrapper p span {
+    font-weight: 700;
+}
+
+
+
+/* Content */
+#content {
+    position: relative;
+    width: calc(100% - 260px); /* Perbaikan spasi pada calc */
+    left: 260px;
+    transition: all 0.3s ease;
+}
+
+#sidebar.hide + #content{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+/* Navbar */
+nav {
+    background: var(--light);
+    height: 64px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Agar elemen dalam navbar rata */
+    gap: 28px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/* Toggle Sidebar */
+nav .toggle-sidebar {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--dark);
+    transition: transform 0.4s ease-in-out, color 0.3s ease-in-out;
+}
+
+nav .toggle-sidebar:hover {
+    transform: scale(1.1); /* Efek sedikit membesar saat hover */
+    color: var(--blue);
+}
+
+nav form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+}
+
+nav .form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+nav .form-group input {
+    width: 100%;
+    background: var(--grey);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px 36px 10px 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav .form-group input:focus {
+    box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
+}
+
+nav .form-group .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    color: var(--dark);
+}
+
+nav .nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--dark);
+    text-decoration: none;
+    background: none;
+}
+
+nav .nav-link .icon {
+    font-size: 20px;
+}
+
+nav .nav-link .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--light);
+    background: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+nav .divider {
+    width: 1px;
+    background: var(--grey);
+    height: 24px; /* Diperpanjang sedikit untuk proporsi */
+}
+
+nav .profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+nav .profile img {
+    width: 40px; /* Sedikit diperbesar */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+nav .profile .profile-link {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--light);
+    padding: 10px 0;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 160px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+nav .profile:hover .profile-link {
+    opacity: 1;
+    pointer-events: visible;
+    top: 100%;
+}
+
+nav .profile .profile-link a {
+    padding: 10px 16px;
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--dark);
+    align-items: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+nav .profile .profile-link a:hover {
+    background: var(--grey);
+}
+
+/* Main */
+main{
+    width: 100%;
+    padding: 36px 20px 20px 20px;
+}
+
+main .title{
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+main .breadcrumbs{
+    display: flex;
+    grid-gap: 6px;
+}
+
+main .breadcrumbs li,
+main .breadcrumbs li a{
+    font-size: 14px;
+    background: none;
+    color: var(--blue);
+}
+
+main .breadcrumbs li a.active{
+    color: var(--blue);
+}
+
+main .breadcrumbs li a.active,
+main .breadcrumbs li .divider{
+    color: var(--dark-grey);
+    pointer-events: none;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    background: var(--light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: var(--dark);
+    table-layout: fixed; /* Memastikan lebar tabel tetap */
+}
+
+.modern-table thead {
+    background: var(--blue);
+    color: var(--light);
+}
+
+.modern-table th,
+.modern-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Pastikan kolom No tetap kecil dan rata tengah */
+.modern-table th:first-child,
+.modern-table td:first-child {
+    width: 60px;  /* Ukuran tetap */
+    text-align: center; /* Nomor tetap di tengah */
+}
+
+.modern-table th:nth-child(2),
+.modern-table td:nth-child(2) {
+    text-align: center;
+}
+
+.modern-table th:nth-child(3),
+.modern-table td:nth-child(3) {
+    text-align: center;
+}
+
+.modern-table tbody tr {
+    border-bottom: 1px solid var(--grey);
+    transition: background 0.3s ease-in-out;
+}
+
+.modern-table tbody tr:hover {
+    background: rgba(0, 0, 255, 0.1);
+}
+
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Warna berdasarkan status */
+.status.pending {
+    color: #ffc107;
+}
+
+.status.approved {
+    color: #28a745;
+}
+
+.status.rejected {
+    color: #dc3545;
+}
+
+.status.completed {
+    background-color: #007bff; /* Biru */
+    color: white;
+}
+
+
+.container-form {
+    display: flex;
+    justify-content: flex-start; /* Menyesuaikan form ke kiri */
+    align-items: center;
+    height: 40vh;
+    padding: 10px;
+}
+
+.form-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px; /* Lebar form lebih kecil agar tidak melebar */
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Jarak antar elemen */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0px 0px 6px rgba(40, 167, 69, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-start; /* Tombol sejajar di kiri */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px; /* Menambah jarak dari tabel */
+    padding: 10px;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 8px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 5px; /* Jarak antar elemen */
+}
+
+.pagination li {
+    margin: 0;
+}
+
+.pagination li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #333333;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.pagination li a:hover {
+    background-color: #f0f0f0;
+    border-color: #333;
+}
+
+.pagination li.active a {
+    background-color: #3a4af5;
+    color: white;
+    font-weight: bold;
+    border-color: #3a4af5;
+}
+
+.pagination li.prev a,
+.pagination li.next a {
+    width: auto;
+    padding: 0 15px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .pagination {
+        gap: 4px;
+    }
+
+    .pagination li a {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* Main */

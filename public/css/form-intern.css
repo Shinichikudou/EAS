@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-in forwards;
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animasi Slide In */
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.left {
+    flex: 1;
+    background: #64B5F6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    animation: slideInLeft 1s ease-out;
+}
+
+.right {
+    flex: 2;
+    background: white;
+    padding: 40px;
+    animation: slideInRight 1s ease-out;
+}
+
+/* Efek masuk bertahap */
+h2, h3, .form-group, .submit-container {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+h2 { animation-delay: 0.5s; }
+h3 { animation-delay: 0.7s; }
+.form-group { animation-delay: 1s; }
+.submit-container { animation-delay: 1.2s; }
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.half {
+    width: 48%;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Efek Hover Label */
+.form-group label:hover {
+    color: #64B5F6;
+}
+
+/* Efek Hover Input & Select */
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+    background: white;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #64B5F6;
+    box-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+    outline: none;
+    transform: scale(1.02);
+}
+
+/* Efek Hover pada Input */
+.form-group input:hover, .form-group select:hover {
+    border-color: #64B5F6;
+}
+
+/* Efek Hover pada Select */
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364B5F6'><path d='M7 10l5 5 5-5H7z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 30px;
+}
+
+/* Animasi Hover Tombol */
+.submit-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-button, .back-button {
+    background: #64B5F6;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 20%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover & Animasi Klik Tombol */
+.submit-button:hover, .back-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:active, .back-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+    background: #ccc;
+}
+
+/* 🔹 RESPONSIVE DESIGN */
+
+/* 📏 Tablet */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left, .right {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .half {
+        width: 100%;
+    }
+
+    .submit-container {
+        flex-direction: column;
+    }
+
+    .submit-button, .back-button {
+        width: 100%;
+    }
+}
+
+/* 📱 Handphone */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .left {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .form-group label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .form-group input {
+        width: 100%;
+    }
+
+    .submit-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submit-button, .back-button {
+        width: 100%;
+        padding: 14px;
+        font-size: 14px;
+    }
+}

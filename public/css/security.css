@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: #f4f4f4;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animasi Fade-In untuk Halaman */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar */
+.navbar {
+    width: 95%;
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: absolute;
+    top: 0;
+}
+
+/* Logo di pojok kiri atas */
+.logo {
+    width: 100px;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Animasi Floating untuk Logo */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Profile di pojok kanan atas */
+.profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Foto Profil */
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek Zoom & Glow saat Hover */
+.profile:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown menu */
+.profile-link {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 150px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+}
+
+/* Tampilkan dropdown saat hover */
+.profile:hover .profile-link {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Styling menu dropdown */
+.profile-link li {
+    list-style: none;
+    padding: 5px;
+}
+
+/* Animasi Hover pada Dropdown */
+.profile-link li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 6px;
+}
+
+.profile-link li a:hover {
+    background: #64B5F6;
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Container utama */
+.container {
+    text-align: center;
+    width: 450px;
+    position: relative;
+    margin-top: 100px;
+    top: 10%;
+}
+
+/* Judul */
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Gambar Scan */
+.scan-image {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.scan-image img {
+    width: 200px;
+    height: auto;
+}
+
+/* Form Input */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Animasi Hover Input */
+.input-group input {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 65%;
+    transition: all 0.3s ease;
+}
+
+/* Efek Focus */
+.input-group input:focus {
+    border-color: #64B5F6;
+    box-shadow: 0 0 8px rgba(100, 181, 246, 0.5);
+    outline: none;
+}
+
+/* Tombol Scan */
+.scan-btn {
+    background: #64B5F6;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ikon QR Code */
+.scan-btn i {
+    font-size: 24px;
+}
+
+/* Hover Tombol Scan */
+.scan-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#intern-data-popup .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#intern-data-popup .popup-content img {
+    width: 200px;
+    height: 200px;
+    margin: 60px auto 20px auto; /* jarak atas-bawah yang pas */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tambahan untuk beri jarak antar elemen form */
+#intern-data-popup .popup-content p {
+    margin-bottom: 10px;
+}
+
+/* Button sejajar dan kasih jarak */
+#intern-data-popup .popup-content .btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap; /* biar tetap responsif di layar kecil */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    .profile img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile-link {
+        width: 130px;
+        top: 60px;
+    }
+
+    .profile-link li a {
+        font-size: 13px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .scan-image img {
+        width: 180px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .scan-btn {
+        width: 100%;
+    }
+}
+
+/* Animasi Loading */
+.animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    z-index: 1000;
+    animation: fadeInOut 3s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
